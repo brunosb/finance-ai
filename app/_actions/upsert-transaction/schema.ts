@@ -5,6 +5,7 @@ import {
 } from '@prisma/client'
 import { z } from 'zod'
 
+// Schema for the upsert transaction action
 export const UpsertTransactionSchema = z.object({
 	name: z.string().min(1),
 	amount: z.number().positive(),
