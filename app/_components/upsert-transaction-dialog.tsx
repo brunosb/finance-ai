@@ -83,7 +83,6 @@ export const UpsertTransactionDialog = ({
 	defaultValues,
 	transactionId,
 }: UpsertTransactionDialogProps) => {
-	console.log('UpsertTransactionDialog', isOpen, defaultValues)
 	const form = useForm<FormSchema>({
 		resolver: zodResolver(formSchema),
 		defaultValues: defaultValues || {
