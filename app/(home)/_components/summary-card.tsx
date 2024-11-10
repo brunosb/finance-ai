@@ -1,6 +1,5 @@
 import { AddTransactionButton } from '@/app/_components/add-transaction-button'
 import { Card, CardContent, CardHeader } from '@/app/_components/ui/card'
-import { db } from '@/app/_lib/prisma'
 import { ReactNode } from 'react'
 
 interface SummaryCardProps {
@@ -8,6 +7,7 @@ interface SummaryCardProps {
 	title: string
 	amount: number
 	size?: 'small' | 'large'
+	userCanAddTransaction?: boolean
 }
 
 export const SummaryCard = async ({
@@ -15,6 +15,7 @@ export const SummaryCard = async ({
 	amount,
 	icon,
 	size = 'small',
+	userCanAddTransaction,
 }: SummaryCardProps) => {
 	return (
 		<Card className={`${size === 'large' ? 'bg-white bg-opacity-5' : ''}`}>
@@ -36,7 +37,9 @@ export const SummaryCard = async ({
 					}).format(amount)}
 				</p>
 
-				{size === 'large' && <AddTransactionButton />}
+				{size === 'large' && (
+					<AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
+				)}
 			</CardContent>
 		</Card>
 	)
